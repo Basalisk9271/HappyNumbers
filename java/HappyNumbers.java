@@ -50,8 +50,6 @@ public class HappyNumbers {
    }//method found on rosetta code to check to see if the numbers are happy
 
    public static void normCheck(int number, Map<Double, Integer> map) {
-       //HashSet<Integer> cycle = new HashSet<>();
-       //List<String> normSum
        int tempNum = number; 
        double normSum = Math.pow(number,2);
        
@@ -69,8 +67,8 @@ public class HappyNumbers {
         Iterator i = set.iterator(); //iterator to iterate through the list
         int count = 0; //while control value
         while (i.hasNext() && count < 10) {
-            Map.Entry me = (Map.Entry)i.next();
-            System.out.println(me.getValue());
+            Map.Entry mEntry = (Map.Entry)i.next();
+            System.out.println(mEntry.getValue());
             count++;
         }//Iterates through the map and pulls the first 10 highest norms
     }//method to print the first 10 entries in the map
