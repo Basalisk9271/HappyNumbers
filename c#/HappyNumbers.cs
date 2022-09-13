@@ -39,7 +39,7 @@ public class HappyNumbers
         {
             HappyNumbers.printDict(normDict);
         }
-    }// main method
+    }// main function
     
     public static bool isHappy(int number, ref SortedDictionary<double,int> dict)
     {
@@ -70,7 +70,8 @@ public class HappyNumbers
         double norm = Math.Sqrt(runningTotalForNorm);
         dict.Add(norm, initialNumber);
         return true;        
-    }// method found on rosetta code to check to see if the numbers are happy
+    }// funtion found on rosetta code but modified to check to see if the 
+    //numbers are happy and then to calculate the norms of the happy numbers so they could be added to a sorted dictionary
     
     public static void printDict(SortedDictionary <double, int> dict)
     {
@@ -91,5 +92,5 @@ public class HappyNumbers
                 counter++;  
             }   
         }
-    }//
+    }//function to print the top 10 items in the dictionary in descending order, printing the norms from highest to lowest in the top 10
 }

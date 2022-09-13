@@ -1,0 +1,1 @@
+def isHappy(num, dict):
