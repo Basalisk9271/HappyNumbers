@@ -1,3 +1,4 @@
+//This is my C# code for the Happy Numbers Project
 // Include namespace system
 using System;
 using System.Collections.Generic;
@@ -88,7 +89,7 @@ public class HappyNumbers
                 break;
             }
             else{
-                Console.WriteLine(pair.Value);
+                Console.WriteLine(pair.Value + " ------" + pair.Key);
                 counter++;  
             }   
         }
