@@ -72,4 +72,4 @@ def printDict(normDict) : #function to sort the dictionary and then print the to
         for x in range(len(printTopTen)):
             print(printTopTen[x])
 
-main()
+main() #run the program
