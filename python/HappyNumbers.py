@@ -1,7 +1,7 @@
 #This is the file for HappyNumbers in Python
 import math
 
-def main() :
+def main() : # main method
     num1 = int(input("First Argument: "))
     num2 = int(input("Second Argument: "))
     # take in arguments from command line
@@ -22,9 +22,9 @@ def main() :
         print("NOBODYS HAPPY!")
     else :
         printDict(normDict)
-# main method
 
-def isHappy(number) :
+
+def isHappy(number) : # method based on the rosetta code function found for c# since I liked it a bit more than the one for Java
     cache = []
     sum = 0
     while (number != 1 ) :
@@ -38,9 +38,9 @@ def isHappy(number) :
         number = number + sum
         sum = 0
     return True
-# method found on rosetta code to check to see if the numbers are happy
 
-def normCheck(number):
+
+def normCheck(number): #function to get the norm of the number entered and return a tuple in [number, norm] format
     sum = 0
     initialNumber = int(number)
     runningTotalForNorm = float((number**2)+1 )
@@ -56,7 +56,7 @@ def normCheck(number):
     norm = float(math.sqrt(runningTotalForNorm))
     return [initialNumber,norm]
 
-def printDict(normDict) :
+def printDict(normDict) : #function to sort the dictionary and then print the top ten norms from it
     sortedDictData = sorted(normDict.items(), key=lambda x: x[1], reverse=True)
     sortedDict = dict(sortedDictData)
     
@@ -71,6 +71,5 @@ def printDict(normDict) :
         printTopTen = list(sortedDict.keys())[0:n]
         for x in range(len(printTopTen)):
             print(printTopTen[x])
-            #print("\n")
 
 main()
