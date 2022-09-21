@@ -23,7 +23,7 @@ def main() : # main method
     else :
         printDict(normDict)
 
-def isHappy(number) : # method based on the rosetta code function found for c# since I liked it a bit more than the one for Java
+def isHappy(number) : #method based on the rosetta code function found for c# since I liked it a bit more than the one for Java
     cache = []
     sum = 0
     while (number != 1 ) :
