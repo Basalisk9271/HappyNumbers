@@ -1,3 +1,5 @@
+//This is my go program for HappyNumbers
+
 package main
 
 import "os"
