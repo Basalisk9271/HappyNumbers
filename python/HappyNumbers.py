@@ -23,7 +23,6 @@ def main() : # main method
     else :
         printDict(normDict)
 
-
 def isHappy(number) : # method based on the rosetta code function found for c# since I liked it a bit more than the one for Java
     cache = []
     sum = 0
@@ -38,7 +37,6 @@ def isHappy(number) : # method based on the rosetta code function found for c# s
         number = number + sum
         sum = 0
     return True
-
 
 def normCheck(number): #function to get the norm of the number entered and return a tuple in [number, norm] format
     sum = 0
