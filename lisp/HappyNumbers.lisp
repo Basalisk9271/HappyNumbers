@@ -1,6 +1,6 @@
 #!/usr/bin/sbcl --script
 ;;; Here is the function to print the prime numbers
-(defun printprimes (num1 num2)
+(defun printHappyNums (num1 num2)
   (loop for i from num1 to num2 by 1 do
         ( when (isprime i) (print i) )
         )
@@ -8,7 +8,7 @@
   )
 
 ;;; Here is the function to determine if a number is prime
-(defun isprime ( num )
+(defun ishappy ( num )
   (let (( numDivisors 0))
     (loop for i from 1 to num by 1 do
           ( when ( = (mod num i) 0 )
