@@ -4,13 +4,22 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-  
+
 struct Node {
     int data;
     struct Node* next;
 };//Struct found on GeeksforGeeks's website regarding linked lists
 
+struct KVPair {
+    int happyNumber;
+    double norm;
+};//Struct for holding my happy numbers and norms while sorting
+
 double isHappy(int n);
+bool searchLL(struct Node* head, int x);
+void push(struct Node** head_ref, int new_key);
+int compare (const void * a, const void * b);
+void printArr(struct KVPair happyArray[]);
 
 void main(){
     int lowerBound, upperBound;
@@ -25,29 +34,33 @@ void main(){
         upperBound = lowerBound;
         lowerBound = temp;
     }
-    int runningTotal;
-    double normTotal;
+    double norm;
+    struct KVPair happyArray[10];
     for (int i = lowerBound;i<upperBound+1; i++){
-        runningTotal = 0;
-        int *runningTotalPointer = &runningTotal;
-        if (isHappy(i)) {
+        if (isHappy(i) != -1) {
             happyCount++;
-            printf("%d", i);
-            printf("---------%f", normTotal);
-            printf("\n");
+            norm = isHappy(i);
+            struct KVPair newKVP = {i,norm};
+            if (newKVP.norm > happyArray[9].norm){
+                happyArray[9] = newKVP;
+            }
+            qsort(happyArray, 10, sizeof(struct KVPair), compare);
         }
-        
+        qsort(happyArray, 10, sizeof(struct KVPair), compare);
     }
-    
+    printArr(happyArray);
+
 }
-double isHappy(int num) //This is the method from rosetta code to implement the isHappy boolean
-{
+
+/*This is a function mirroring the isHappy from c# since I liked its simplicity better.
+This function outputs the norm calculation as a doube so it can be added to map*/
+double isHappy(int num){ 
 	struct Node* cache = NULL;
 
-    int sum = 0, initialNum = num;
-    int runningTotalForNorm = (num*num)+1;
+    int sum = 0;
+    long runningTotalForNorm = (num*num)+1;
     while (num != 1){
-        if (search(cache, num)){
+        if (searchLL(cache, num)){
             return -1;
         }
         push(&cache, num);
@@ -62,16 +75,18 @@ double isHappy(int num) //This is the method from rosetta code to implement the 
         sum = 0;
     }
     double norm = sqrt((double)runningTotalForNorm);
-    struct Node* x = cache;
-    cache = cache->next;
-    free(x);
+    struct Node* curr;
+    while ((curr = cache) != NULL) { //Frees up the memory
+        cache = cache->next;          //Code found on https://stackoverflow.com/questions/7025328/linkedlist-how-to-free-the-memory-allocated-using-malloc
+        free (curr);                
+    }
+
     return norm;
 }
 
 /* Checks whether the value x is present in linked list 
 Found on https://www.geeksforgeeks.org/search-an-element-in-a-linked-list-iterative-and-recursive/ */
-bool search(struct Node* head, int x)
-{
+bool searchLL(struct Node* head, int x){
     struct Node* current = head; // Initialize current
     while (current != NULL) {
         if (current->data == x)
@@ -81,15 +96,11 @@ bool search(struct Node* head, int x)
     return false;
 }
 
-/* Given a reference (pointer to pointer) to the head
-  of a list and an int, push a new node on the front
-  of the list. 
+/* Given a reference (pointer to pointer) to the head of a list and an int, push a new node on the front of the list. 
   Found on https://www.geeksforgeeks.org/search-an-element-in-a-linked-list-iterative-and-recursive/ */
-void push(struct Node** head_ref, int new_key)
-{
+void push(struct Node** head_ref, int new_key){
     /* allocate node */
-    struct Node* new_node
-        = (struct Node*)malloc(sizeof(struct Node));
+    struct Node* new_node = (struct Node*)malloc(sizeof(struct Node));
  
     /* put in the data  */
     new_node->data = new_key;
@@ -101,6 +112,28 @@ void push(struct Node** head_ref, int new_key)
     (*head_ref) = new_node;
 }
 
-void printDict(){
+/*Comparator function to sort the array
+This was found on https://www.gnu.org/software/libc/manual/html_node/Comparison-Functions.html and 
+https://iq.opengenus.org/qsort-in-c/ */
+int compare (const void * a, const void * b){
+  const struct KVPair *pair1 = a;
+  const struct KVPair *pair2 = b;
+  if (pair1->norm > pair2->norm)
+      return -1;
+   else if (pair1->norm < pair2->norm)
+      return 1;
+   else
+      return 0;
+}
 
+/*This is a function to print the array passed into it*/
+void printArr(struct KVPair happyArray[]){
+    int i = 0;
+    while (i < 10 ){//&& happyArray[i].norm != 0 && happyArray[i].happyNumber != 0){
+         printf("%d ", happyArray[i].happyNumber);
+         printf("---------%f", happyArray[i].norm);
+         printf("\n");
+         i++;
+    }
+       
 }
