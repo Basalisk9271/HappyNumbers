@@ -49,12 +49,17 @@ PROGRAM HappyNumbers
 
     !print off the sorted array while the number in happyNum is not 0 and the counter is less than 10
     !This is important because we only want the top 10 highest Norms
-    do i = 1, 10
-        if ( happyArray(i)%happyNum /= 0 ) then
-            WRITE(*, '(i0)') happyArray(i)%happyNum
-            !WRITE(*, '(F0.6)') happyArray(i)%norm
-        end if
-    end do
+    !If there are no happy numbers in the range, print off "NOBODYS HAPPY!"
+    if ( happyArray(1)%happyNum == 0 ) then
+        write(*,"(A)",advance="yes") "NOBODYS HAPPY!"
+    else
+        do i = 1, 10
+            if ( happyArray(i)%happyNum /= 0 ) then
+                WRITE(*, '(i0)') happyArray(i)%happyNum
+            end if
+        end do
+    end if
+    
 
     contains
     
