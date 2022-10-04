@@ -45,7 +45,7 @@ int main(){
             struct KVPair newKVP = {i,norm};
             if (newKVP.norm > happyArray[9].norm){
                 happyArray[9] = newKVP;
-            }
+            }//Forced the array to initialize with zeros for the values inside the structs
             qsort(happyArray, 10, sizeof(struct KVPair), compare);
         }
     }
