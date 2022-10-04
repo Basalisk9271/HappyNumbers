@@ -65,22 +65,11 @@ PROGRAM HappyNumbers
         integer, intent(in):: number
         integer(kind = 8) :: temp
         integer :: i, sum
-        allocate(cache(number))
 
         do while () 
 
         end do
     end function isHappy
-    
-    logical function searchLL(head, x) 
-       IMPLICIT NONE
-       type(KVPair), intent(in) :: happyArray(10)
-       integer, intent(in) :: 
-       integer :: i
-       logical :: isPrime
-        
-
-    end function
 
     !This bubble sort is one found on Rosetta Code and tweaked to bubble sort my array of structs
     SUBROUTINE Bubble_Sort(a)
