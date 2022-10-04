@@ -1,4 +1,7 @@
-//This is my c program for Happy Num
+//Gabe Imlay
+//CSC330: Organization of Programming Languages
+//Project 1: Happy Numbers -> C
+//October 7th, 2022
 
 #include <stdbool.h>
 #include <stdio.h>
