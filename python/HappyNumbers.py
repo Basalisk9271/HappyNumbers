@@ -1,4 +1,8 @@
-#This is the file for HappyNumbers in Python
+#Gabe Imlay
+#CSC330: Organization of Programming Languages
+#Project 1: Happy Numbers -> Python
+#October 7th, 2022
+
 import math
 
 def main() : # main method
