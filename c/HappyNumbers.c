@@ -136,12 +136,19 @@ int compare (const void * a, const void * b){
 
 /*This is a function to print the array passed into it*/
 void printArr(struct KVPair happyArray[]){
-    int i = 0;
-    while (i < 10 && happyArray[i].norm != 0 && happyArray[i].happyNumber != 0){
-         printf("%d ", happyArray[i].happyNumber);
-         printf("---------%f", happyArray[i].norm);
-         printf("\n");
-         i++;
+    if (happyArray[0].happyNumber == 0){
+        printf("NOBODYS HAPPY!\n");
     }
+    else{
+        int i = 0;
+        while (i < 10 && happyArray[i].norm != 0 && happyArray[i].happyNumber != 0){
+            printf("%d ", happyArray[i].happyNumber);
+            printf("---------%f", happyArray[i].norm);
+            printf("\n");
+            i++;
+        }
+    }
+    
+    
        
 }
