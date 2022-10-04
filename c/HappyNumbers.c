@@ -38,14 +38,14 @@ int main(){
     for (int i = 0; i < 10; i++){
         struct KVPair newKVP = {0,0};
         happyArray[i] = newKVP;
-    }
+    }//Forced the array to initialize with zeros for the values inside the structs
     for (int i = lowerBound;i<upperBound+1; i++){
         if (isHappy(i) != -1) {
             norm = isHappy(i);
             struct KVPair newKVP = {i,norm};
             if (newKVP.norm > happyArray[9].norm){
                 happyArray[9] = newKVP;
-            }//Forced the array to initialize with zeros for the values inside the structs
+            }
             qsort(happyArray, 10, sizeof(struct KVPair), compare);
         }
     }
