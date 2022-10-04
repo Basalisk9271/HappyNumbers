@@ -1,5 +1,8 @@
-//This is my C# code for the Happy Numbers Project
-// Include namespace system
+//Gabe Imlay
+//CSC330: Organization of Programming Languages
+//Project 1: Happy Numbers -> C#
+//October 7th, 2022
+
 using System;
 using System.Collections.Generic;
 
