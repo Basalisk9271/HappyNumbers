@@ -21,7 +21,7 @@ void push(struct Node** head_ref, int new_key);
 int compare (const void * a, const void * b);
 void printArr(struct KVPair happyArray[]);
 
-void main(){
+int main(){
     int lowerBound, upperBound;
     printf("First Argument: ");
     scanf ("%d", &lowerBound);
@@ -36,6 +36,10 @@ void main(){
     }
     double norm;
     struct KVPair happyArray[10];
+    for (int i = 0; i < 10; i++){
+        struct KVPair newKVP = {0,0};
+        happyArray[i] = newKVP;
+    }
     for (int i = lowerBound;i<upperBound+1; i++){
         if (isHappy(i) != -1) {
             happyCount++;
@@ -46,9 +50,10 @@ void main(){
             }
             qsort(happyArray, 10, sizeof(struct KVPair), compare);
         }
-        qsort(happyArray, 10, sizeof(struct KVPair), compare);
     }
     printArr(happyArray);
+
+    return 0;
 
 }
 
@@ -58,8 +63,11 @@ double isHappy(int num){
 	struct Node* cache = NULL;
 
     int sum = 0;
-    long runningTotalForNorm = (num*num)+1;
+    double runningTotalForNorm = 1;
+    long temp;
     while (num != 1){
+        temp = (long)num;
+        runningTotalForNorm += (temp*temp);
         if (searchLL(cache, num)){
             return -1;
         }
@@ -71,10 +79,9 @@ double isHappy(int num){
             num/=10; 
         }
         num += sum;
-        runningTotalForNorm += (num*num);
         sum = 0;
     }
-    double norm = sqrt((double)runningTotalForNorm);
+    double norm = sqrt(runningTotalForNorm);
     struct Node* curr;
     while ((curr = cache) != NULL) { //Frees up the memory
         cache = cache->next;          //Code found on https://stackoverflow.com/questions/7025328/linkedlist-how-to-free-the-memory-allocated-using-malloc
@@ -129,7 +136,7 @@ int compare (const void * a, const void * b){
 /*This is a function to print the array passed into it*/
 void printArr(struct KVPair happyArray[]){
     int i = 0;
-    while (i < 10 ){//&& happyArray[i].norm != 0 && happyArray[i].happyNumber != 0){
+    while (i < 10 && happyArray[i].norm != 0 && happyArray[i].happyNumber != 0){
          printf("%d ", happyArray[i].happyNumber);
          printf("---------%f", happyArray[i].norm);
          printf("\n");
