@@ -1,3 +1,8 @@
+//Gabe Imlay
+//CSC330: Organization of Programming Languages
+//Project 1: Happy Numbers -> Java
+//October 7th, 2022
+
 import java.util.*;
 import java.util.Arrays;
 import java.util.ArrayList;
