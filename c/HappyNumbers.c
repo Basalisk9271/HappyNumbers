@@ -27,8 +27,7 @@ int main(){
     scanf ("%d", &lowerBound);
     printf("Second Argument: ");
     scanf ("%d", &upperBound);
-    int happyCount = 0;
-
+    
     if (lowerBound > upperBound) {
         int temp = upperBound;
         upperBound = lowerBound;
@@ -42,7 +41,6 @@ int main(){
     }
     for (int i = lowerBound;i<upperBound+1; i++){
         if (isHappy(i) != -1) {
-            happyCount++;
             norm = isHappy(i);
             struct KVPair newKVP = {i,norm};
             if (newKVP.norm > happyArray[9].norm){
