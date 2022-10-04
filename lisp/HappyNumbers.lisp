@@ -1,5 +1,10 @@
 #!/usr/bin/sbcl --script
-;;; Here is the function to print the prime numbers
+
+;Gabe Imlay
+;CSC330: Organization of Programming Languages
+;Project 1: Happy Numbers -> Lisp
+;October 7th, 2022
+
 (defun printHappyNums (num1 num2)
   (loop for i from num1 to num2 by 1 do
         ( when (isprime i) (print i) )
