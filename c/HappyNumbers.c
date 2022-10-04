@@ -19,7 +19,7 @@ double isHappy(int n);
 bool searchLL(struct Node* head, int x);
 void push(struct Node** head_ref, int new_key);
 int compare (const void * a, const void * b);
-void printArr(struct KVPair happyArray[]);
+void printArr(struct KVPair happyArray[], int numHappy);
 
 void main(){
     int lowerBound, upperBound;
@@ -48,7 +48,13 @@ void main(){
         }
         qsort(happyArray, 10, sizeof(struct KVPair), compare);
     }
-    printArr(happyArray);
+    if (happyCount < 10){
+        printArr(happyArray, happyCount);
+    }
+    else{
+        printArr(happyArray, 10);
+    }
+    
 
 }
 
@@ -127,9 +133,9 @@ int compare (const void * a, const void * b){
 }
 
 /*This is a function to print the array passed into it*/
-void printArr(struct KVPair happyArray[]){
+void printArr(struct KVPair happyArray[], int numHappy){
     int i = 0;
-    while (i < 10 ){//&& happyArray[i].norm != 0 && happyArray[i].happyNumber != 0){
+    while (i < numHappy ){//&& happyArray[i].norm != 0 && happyArray[i].happyNumber != 0
          printf("%d ", happyArray[i].happyNumber);
          printf("---------%f", happyArray[i].norm);
          printf("\n");
