@@ -3,84 +3,109 @@
 //Project 1: Happy Numbers -> Go
 //October 7th, 2022
 
+//Tutorials Point is where I found most of my structure and how to call different things
+//https://www.tutorialspoint.com/go/index.htm
+
 package main
 
-import "os"
-import "strings"
+//import "os"
+//import "strings"
 import "math"
 import "fmt"
+//import "sort"
+//import "log"
 
 
-type HappyNumbers struct {
-}
-func HappyNumbers_1() * HappyNumbers {
-    var this * HappyNumbers =  &HappyNumbers{};
-    return this;
-}
-func (this *HappyNumbers) main_1(args []string) {
-    var  num1  int = Integer.parseInt(args[0]);
-    var  num2  int = Integer.parseInt(args[1]);
-    // take in arguments from command line
+type KVPair struct {
+    happyNum int64
+    norm float64 
+}//define a struct to hold the happyNums and norms
+
+func main () {
+    var  num1, num2, i int64;
+    var norm float64;
+
+    fmt.Print("First Argument: ")
+    fmt.Scanln(&num1)
+    fmt.Print("Second Argument: ")
+    fmt.Scanln(&num2)
+    
     if (num1 > num2) {
-        num1 = num1 ^ num2 ^ (num2 = num1);
+        num1, num2 = num2, num1
     }
+
     // if the first number is larger than the second number, swap the numbers
-    var  happyNums []java.lang.Integer()
-    fmt.Println("First Argument: " + args[0] + "\nSecond Argument: " + args[1]);
-    for  current  := num1; current <= num2; current++ {
-        if (this.isHappy(current)) {
-            happyNums= append(happyNums,current);
+    var happyArray[10] KVPair
+    for i = 0; i < 10; i++ { //initialize the array of structures
+        happyArray[i].happyNum = 0
+        happyArray[i].happyNum = 0
+    }
+    
+    for i = num1; i < num2+1; i++ {
+        if (isHappy(i) != -1){
+            norm = isHappy(i);
+            if(norm > happyArray[9].norm){
+                happyArray[9].happyNum = i;
+                happyArray[9].norm = norm;
+            }
+            happyArray = BubbleSort(happyArray);
         }
     }
-    // for loop to check if there any happy numbers in the range specified by the arguments
-    if (len(happyNums) == 0) {
-        fmt.Println("NOBODYS HAPPY!");
-    } else {
-        var  map java.util.TreeMap(Collections.reverseOrder())
-        for  i  := 0; i < len(happyNums); i++ {
-            this.normCheck(happyNums[i], map);
+
+    /*print off the sorted array while the number in happyNum is not 0 and the counter is less than 10
+    This is important because we only want the top 10 highest Norms
+    If there are no happy numbers in the range, print off "NOBODYS HAPPY!"*/
+    if (happyArray[0].happyNum == 0){
+        fmt.Println("NOBODYS HAPPY!")
+    }else {
+        for i = 0; i < 10; i++ {
+            if (happyArray[i].happyNum != 0){
+                fmt.Printf("%d\n", happyArray[i].happyNum)
+            }
+                
         }
-        this.printMap(map);
     }
-}
-// main method
-func (this *HappyNumbers) isHappy( number  int)bool {
-    var  cycle java.util.HashSet()
-    // List<String> normSum
-    for(number != 1 && cycle.add(number)) {
-        var  numStrList*  java.util.List = Arrays.asList(strings.Split(String.valueOf(number),""));
-        number = numStrList.stream().map((i)->math.Pow(float64(Integer.parseInt(i)),float64(2))).mapToInt((i)->i.intValue()).sum();
-    }
-    return number == 1;
-}
-// method found on rosetta code to check to see if the numbers are happy
-func (this *HappyNumbers) normCheck( number  int,  map ) {
-    var  tempNum  int = number;
-    var  normSum  float64 = math.Pow(float64(number),float64(2));
-    for(number != 1) {
-        var  numStrList*  java.util.List = Arrays.asList(strings.Split(String.valueOf(number),""));
-        number = numStrList.stream().map((i)->math.Pow(float64(Integer.parseInt(i)),float64(2))).mapToInt((i)->i.intValue()).sum();
-        normSum += math.Pow(float64(number),float64(2));
-    }
-    var  norm  float64 = math.Sqrt(normSum + float64(1));
-    map.put(norm,tempNum);
-}
-// method similar to the rosetta code snippet, but this one calculates the norm and adds it to the map
-func (this *HappyNumbers) printMap( map ) {
-    var  set*  Set = map.entrySet();
-    // create a set to iterate through
-    var  i*  Iterator = set.iterator();
-    // iterator to iterate through the list
-    var  count  int = 0;
-    // while control value
-    for(i.hasNext() && count < 10) {
-        var  mEntry*  Map.Entry = Map.Entry(i.next());
-        fmt.Println(mEntry.getValue());
-        count++;
-    }
+    
+    
+    
 }
 
-func main(){
-	var task = HappyNumbers{};
-	task.main_1(os.Args);// not 100% accurate
+//function modeled off of the c and fortran versions of my code since I did not like the one that was on rosetta code for go
+func isHappy(param int64) float64 {
+    var number, temp, digit, sum int64;
+    var runningTotalForNorm, norm float64;
+    number = param;
+    runningTotalForNorm = 1;
+
+    for (number != 1){
+        sum = 0;
+        temp = int64(number);
+        temp = temp*temp;
+        runningTotalForNorm += float64(temp);
+        for (number != 0){
+            digit = number%10;
+            sum = sum + (digit*digit);
+            number = number/10
+        }
+        number = number + sum;
+        if (number == 4){
+            return -1;
+        }
+    }
+    norm = math.Sqrt(runningTotalForNorm);
+    runningTotalForNorm = 0;
+    return norm;
+
 }
+
+//Bubble sort from https://www.tutorialspoint.com/bubble-sort-in-go-lang to sort my array of structs
+func BubbleSort(array[10] KVPair)[10]KVPair {
+    for i:=0; i< len(array)-1; i++ {
+       for j:=0; j < len(array)-i-1; j++ {
+          if (array[j].norm < array[j+1].norm) {
+             array[j], array[j+1] = array[j+1], array[j]
+          }
+       }
+    }
+    return array
+ }
