@@ -8,12 +8,8 @@
 
 package main
 
-//import "os"
-//import "strings"
 import "math"
 import "fmt"
-//import "sort"
-//import "log"
 
 
 type KVPair struct {
@@ -30,11 +26,11 @@ func main () {
     fmt.Print("Second Argument: ")
     fmt.Scanln(&num2)
     
+    // if the first number is larger than the second number, swap the numbers
     if (num1 > num2) {
         num1, num2 = num2, num1
     }
-
-    // if the first number is larger than the second number, swap the numbers
+    
     var happyArray[10] KVPair
     for i = 0; i < 10; i++ { //initialize the array of structures
         happyArray[i].happyNum = 0
