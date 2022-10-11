@@ -92,7 +92,7 @@ public class HappyNumbers
                 break;
             }
             else{
-                Console.WriteLine(pair.Value + " ------" + pair.Key);
+                Console.WriteLine(pair.Value );//+ " ------" + pair.Key); //extra bit used to make sure the norms were being calculated properly
                 counter++;  
             }   
         }
