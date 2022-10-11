@@ -15,14 +15,18 @@ public class HappyNumbers {
 
 
    public static void main(String[] args) {
-       int num1 = Integer.parseInt(args[0]);
-       int num2 = Integer.parseInt(args[1]); //take in arguments from command line
+       Scanner input = new Scanner(System.in);
+       System.out.print("First Argument: ");
+       int num1 = input.nextInt();
+       System.out.print("Second Argument: ");
+       int num2 = input.nextInt();
+
+
        if (num1 > num2){
            num1 = num1 ^ num2 ^ (num2 = num1);
        }//if the first number is larger than the second number, swap the numbers
        ArrayList<Integer> happyNums = new ArrayList<Integer>();
        
-       System.out.println("First Argument: "+args[0]+"\nSecond Argument: "+args[1]);
        for (int current = num1; current <= num2; current++){
             if (isHappy(current)) {
                 happyNums.add(current);
