@@ -143,7 +143,7 @@ void printArr(struct KVPair happyArray[]){
         int i = 0;
         while (i < 10 && happyArray[i].norm != 0 && happyArray[i].happyNumber != 0){
             printf("%d ", happyArray[i].happyNumber);
-            printf("---------%f", happyArray[i].norm);
+            //printf("---------%f", happyArray[i].norm); //This was used to check whether the norms are printing with the correct values
             printf("\n");
             i++;
         }
