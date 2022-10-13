@@ -9,6 +9,8 @@
 ; https://www.tutorialspoint.com/lisp/index.htm
 
 ; These are global arrays so that it can be seen by my bubbleSort function. 
+; Josh gave me the idea to two arrays that will be manipulated the exact same by the bubble sort function
+; He also found it was easiest to make the arrays global so it could be used from inside any function
 (defvar happyNums)
 (defvar norms)
 
