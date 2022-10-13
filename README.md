@@ -14,4 +14,7 @@ Gabe Imlay
 
 ## Langauges 
 
-        ### Java
+### Java 
+#### Overview: 
+This was the first language that I wrote this program in
+
