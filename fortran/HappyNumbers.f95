@@ -30,6 +30,10 @@ PROGRAM HappyNumbers
         lowerBound = temp
     end if
 
+    if ( lowerBound == 0) then
+        lowerBound = lowerBound + 1
+    end if
+
     !Initialize array of structures
     do i = 1, 10
         happyArray(i)%happyNum = 0
