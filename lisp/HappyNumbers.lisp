@@ -5,6 +5,9 @@
 ; Project 1: Happy Numbers -> Lisp
 ; October 7th, 2022
 
+; Tutorials Point is where I found most of my structure and how to call different things
+; https://www.tutorialspoint.com/lisp/index.htm
+
 ; These are global arrays so that it can be seen by my bubbleSort function. 
 (defvar happyNums)
 (defvar norms)
