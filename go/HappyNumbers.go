@@ -30,6 +30,10 @@ func main () {
     if (num1 > num2) {
         num1, num2 = num2, num1
     }
+
+    if (num1 == 0) {
+        num1++
+    }
     
     var happyArray[10] KVPair
     for i = 0; i < 10; i++ { //initialize the array of structures
