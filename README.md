@@ -10,4 +10,8 @@ Write a program in different languages (Java, C, C#, Go, Perl, Python, Fortran, 
 Gabe Imlay
 
 ## Project status
- -- Ongoing -- 
+ -- Completed -- 
+
+## Langauges 
+
+        ### Java
