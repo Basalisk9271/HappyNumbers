@@ -30,6 +30,8 @@
           (setq number (floor number 10))
       )
       (setq number (+ number sum))
+      ; Josh gave me this idea to use 4 as a condition for breaking the loop
+      ; Every time a number gets to 4, it goes into the same spiral of not being a happy number
       (if (= number 4)
         (return-from isHappy -1)
       )  
